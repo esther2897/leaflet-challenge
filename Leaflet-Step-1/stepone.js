@@ -1,9 +1,10 @@
 // Store our API endpoint as queryUrl.
-var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.phphttps://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson";
+var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson";
 
 d3.json(queryUrl).then(function(data) {
     createFeatures(data.features);
 })
+
 
 function createFeatures(earthquakeData) {
     function onEachFeature(feature, layer) {
@@ -38,7 +39,8 @@ function createMap(earthquakes) {
         layers: [street, earthquakes]
     });
 
-    L.control.layers(baseMaps, overlayMaps, {
+
+    L.control.layers(baseMaps,  {
         collapsed: false
     }).addTo(myMap);
 
